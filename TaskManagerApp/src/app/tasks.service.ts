@@ -1,17 +1,16 @@
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Projects } from './projects';
 @Injectable({
   providedIn: 'root'
 })
 export class TasksService {
 
   constructor(private httpclient:HttpClient) {
-
     
    }
-   GetRequest(){
-    this.httpclient.get('https://localhost:7212/api/TaskManager/GetData').subscribe(response=>{
-      console.log(response);
-    })
+  public GetRequest():Observable<Projects[]>{
+    return this.httpclient.get<Projects[]>('https://localhost:7212/api/TaskManager/GetData');
    }
 }

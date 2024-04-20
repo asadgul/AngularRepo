@@ -19,7 +19,7 @@
           {{ Designation }}
         </div>
         <div class="col-12 text-center mt-2">
-          <img src="assets/user.png" width="120px" />
+          <!-- <img src="assets/user.png" width="120px" /> -->
         </div>
         <div
           class="col-12 text-center pt-2 pb-2 font-weight-bold"
@@ -104,7 +104,7 @@
                   Project A
                 </button>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" *ngFor="let project of  Projects" onclick="return false" (click)="onProjectChange($event)" >{{project}}</a>
+                  <a class="dropdown-item" *ngFor="let project of  Projects" onclick="return false" (click)="onProjectChange($event)" >{{project.name}}</a>
                   <!-- <a class="dropdown-item" href="#">Project B</a>
                   <a class="dropdown-item" href="#">Project C</a>
                   <a class="dropdown-item" href="#">Project D</a> -->

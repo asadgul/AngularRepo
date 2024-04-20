@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../tasks.service';
+import { Projects } from '../projects';
 
 @Component({
   selector: 'app-dash-board',
@@ -18,12 +19,13 @@ export class DashBoardComponent implements OnInit {
   CurrentExpenditure: number = 0;
   AvailableFunds: number = 0;
 
+//  prolist:Projects[]=[];
   Clients: string[] = [];
-  Projects: string[] = [];
+  Projects: Projects[] = [];
   Years: number[] = [];
   TeamMembersSummary: any = [];
   TeamMembers: any = [];
-  
+//  projectlis:Projects=new Projects(1,'a')
   constructor(private taskser:TasksService) { 
     this.Designation = 'Team Leader';
     this.Username = 'Scott Smith';
@@ -38,10 +40,16 @@ export class DashBoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log('called dashboard');
+  this.taskser.GetRequest().subscribe((response:Projects[])=>{
+    this.Projects=response;
+    // for(var i=0;i<this.prolist.length;i++){
+    //   console.log(this.prolist[i].name);
+    // }
 
-    this.taskser.GetRequest();
+  });
     this.Clients=["ABC Infotech Ltd.","DEF Software Solutions","GHI Industries"];
-    this.Projects=["Project A","Project B","Project C","Project D"];
+//    this.Projects=["Project A","Project B","Project C","Project D"];
     for(var i=2019;i>2010;i--){
       this.Years.push(i);
     }
